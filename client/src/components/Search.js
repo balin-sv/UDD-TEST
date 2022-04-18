@@ -9,7 +9,7 @@ function Search() {
 
   const [data, setData] = useState();
 
-  const url = "http://localhost:5000";
+  const url = "http://localhost:5000/category";
 
   // const postQuery = searchParams.get("q" || "");
 
@@ -28,7 +28,7 @@ function Search() {
   };
 
   return (
-    <>
+    <div className="container mt-5">
       <form onSubmit={addQuery}>
         <input
           value={searchValue}
@@ -43,7 +43,7 @@ function Search() {
         <button className="btn btn-secondary my-2 my-sm-0">Search</button>
       </form>
       {data ? <Catalog data={data} /> : null}
-    </>
+    </div>
   );
 }
 export default Search;

@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Search from "./Search";
-import Catalog from "./Catalog";
+import Search from "./components/Search";
+import Catalog from "./components/Catalog";
 
 function App() {
   return (
