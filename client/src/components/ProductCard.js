@@ -1,37 +1,36 @@
-import React, { useState } from "react";
+import React from "react";
 import "./ProductCard.css";
 import { useSearchParams } from "react-router-dom";
 
-const ProductCard = ({ card }) => {
+const ProductCard = ({ onSetHandler, onSetModal, card }) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [itemInfo, setItemInfo] = useState();
-
   const url = "http://localhost:5000/item";
 
-  // const postQuery = searchParams.get("q" || "");
-
-  const getInfoById = async (e) => {
-    e.preventDefault();
+  const getInfoById = async () => {
     setSearchParams({ id: card.id });
     try {
       const res = await fetch(url + "/?id=" + card.id);
       const data = await res.json();
-      console.log("response", data);
-      // setData(data);
+      onSetHandler(data);
+      onSetModal(true);
     } catch (error) {
       console.log(error);
     }
   };
+
   return (
     <>
       <div class="card m-3">
-        <img src={card.thumbnail} class="card-img-top" alt="..." />
+        <div className="d-flex justify-content-center mt-2">
+          <img src={card.thumbnail} class="img-thumbnail img-fluid" alt="..." />
+        </div>
         <div class="card-body">
           <h5 class="card-title">{card.title}</h5>
           <h3 class="price">{card.price} Pesos</h3>
           <button
             onClick={(e) => {
-              getInfoById(e);
+              e.preventDefault();
+              getInfoById();
             }}
             class="btn btn-primary"
           >

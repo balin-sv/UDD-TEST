@@ -5,3 +5,8 @@
   border: 2px solid gray;
   box-shadow: 5px 10px #888888;
 }
+
+.castom {
+  width: 100px;
+  height: 100px;
+}

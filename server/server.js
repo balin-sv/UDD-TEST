@@ -19,16 +19,13 @@ app.use(
 
 app.get("/category", (req, res) => {
   const query = req.query.term;
-  console.log(query);
   if (appCache.has(query)) {
-    console.log("cache");
     return res.send(appCache.get(query));
   } else {
     fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${query}`)
       .then((res) => res.json())
       .then((json) => {
         appCache.set(query, json);
-        console.log("server");
         res.send(json);
       });
   }
@@ -36,16 +33,13 @@ app.get("/category", (req, res) => {
 
 app.get("/item", (req, res) => {
   const query = req.query.id;
-  console.log(req.query);
   if (appCache.has(query)) {
-    console.log("cache");
     return res.send(appCache.get(query));
   } else {
     fetch(`https://api.mercadolibre.com/items/${query}`)
       .then((res) => res.json())
       .then((json) => {
         appCache.set(query, json);
-        console.log("server");
         res.send(json);
       });
   }
