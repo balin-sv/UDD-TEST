@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const SearchBar = ({ setQuery }) => {
   const [searchValue, setSerchValue] = useState("");
@@ -10,7 +11,7 @@ const SearchBar = ({ setQuery }) => {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              setQuery(searchValue);
+              setQuery(searchValue.toLowerCase());
               setSerchValue("");
             }}
             class="d-flex"

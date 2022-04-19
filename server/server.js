@@ -2,14 +2,10 @@ import express from "express";
 import fetch from "node-fetch";
 import NodeCache from "node-cache";
 import cors from "cors";
-import bodyParser from "body-parser";
 
 const appCache = new NodeCache({ stdTTL: 1000 }); //stay in cache 1 minute
 const app = express();
-const router = express.Router();
 const port = 5000; //backend routing port
-
-app.use(bodyParser.json({ limit: "50mb" }));
 
 app.use(
   cors({
