@@ -5,7 +5,7 @@ import cors from "cors";
 
 const appCache = new NodeCache({ stdTTL: 1000 }); //stay in cache 1 minute
 const app = express();
-const port = 5000; //backend routing port
+const port = prosses.ENV.port || 5000; //backend routing port
 
 app.use(
   cors({
